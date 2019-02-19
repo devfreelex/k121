@@ -1,9 +1,13 @@
 export default {
+	getUsers(state, payload) {
+		if(payload && payload.length) state.users = [...state.users, ...payload]
+		return state;
+	},
 	addItem(state, payload) {
 		if (payload.name && payload.email) state.users.push(payload);
 		return state;
 	},
-	updateItem(state, payload) {
+	updateUser(state, payload) {
 		const { users } = state
 		const listUsers = users.filter( user => {
 			if(user._id === payload._id) {
@@ -14,9 +18,9 @@ export default {
 		})
 		return state;
 	},
-	clearItem(state, payload) {
+	removeUser(state, payload) {
 		state.users = state.users.filter(user => {
-			if (parseInt(user._id) !== parseInt(payload.id)) return user
+			if (user._id !== payload._id) return user
 		})
 		return state
 	}

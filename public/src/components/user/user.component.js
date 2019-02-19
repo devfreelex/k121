@@ -1,5 +1,6 @@
 import Component from '../../../lib/component.js'
-import { event } from '../../../lib/event.js';
+import { event } from '../../../lib/event.js'
+import userService from '../../services/user.service.js'
 
 export default class Form extends Component {
     constructor(store) {
@@ -8,6 +9,14 @@ export default class Form extends Component {
             element: 'user-component'
         })
         this.store = store
+        this.getUsers()
+    }
+
+    getUsers () {
+        event.subscribe('onInit', async status => {
+            const users = await userService.getUsers(this.store)
+            this.store.dispatch('getUsers', users)
+        })
     }
 
     edit (e) {
@@ -16,11 +25,13 @@ export default class Form extends Component {
         event.publish('editUser', { userId })
     }
 
-    remove (e) {
+    async remove (e) {
         e.preventDefault()
         const {userId} = e.target.dataset
-        this.store.dispatch('clearItem', { id: userId })
-        event.publish('removeItem', { userId })
+        const removedUser = await userService.removeUser(userId)
+        console.log(removedUser)
+        this.store.dispatch('removeUser', removedUser)
+        // event.publish('removeItem', { userId })
     }
 
     render(state, actions, mutations) {

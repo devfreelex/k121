@@ -1,3 +1,4 @@
+import { event } from './event.js'
 export default class App {
     constructor(config) {
         this.store = this.setStore(config)
@@ -27,6 +28,7 @@ export default class App {
                 component.render()
             })
         }
+        event.publish('onInit', {status: true})
     }
 
     setComponents (config) { 

@@ -4,6 +4,7 @@ import { event } from '../../../lib/event.js'
 
 import nameValidator from '../../validators/name.validator.js'
 import emailValidator from '../../validators/email.validator.js'
+import userService from '../../services/user.service.js';
 export default class Form extends Component {
     constructor(store) {
         super({
@@ -24,7 +25,7 @@ export default class Form extends Component {
             const { name, email } = bindElement(this)
 
             const user = users.find(user => {
-                if (user._id === parseInt(data.userId)) {
+                if (user._id === data.userId) {
                     return user
                 }
             })
@@ -54,18 +55,24 @@ export default class Form extends Component {
         delete this.user
     }
 
-    save(e) {
+    async save(e) {
         e.preventDefault()
 
         const { name, email } = bindElement(this)
+
         if (!this.hasUser()) {
-            this.store.dispatch('addItem', { name: name.value, email: email.value, _id: this.idGenerator() });
+            const payload = { name: name.value, email: email.value }
+            const newUser = await userService.addUser(payload)
+            this.store.dispatch('addItem', newUser);
             this.resetForm(name, email)
             return
         }
+
+
         name.value = this.user.name
         email.value = this.user.email
-        this.store.dispatch('updateItem', this.user);
+        userService.updateUser(this.user)
+        this.store.dispatch('updateUser', this.user);
         this.resetForm(name, email)
     }
 

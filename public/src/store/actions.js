@@ -1,11 +1,14 @@
 export default {
-	updateItem(context, payload) {
-		context.commit('updateItem', payload);
+	getUsers(context, payload) {
+		context.commit('getUsers', payload);
+	},
+	updateUser(context, payload) {
+		context.commit('updateUser', payload);
 	},
 	addItem(context, payload) {
 		context.commit('addItem', payload);
 	},
-	clearItem(context, payload) {
-		context.commit('clearItem', payload);
+	removeUser(context, payload) {
+		context.commit('removeUser', payload);
 	}
 };

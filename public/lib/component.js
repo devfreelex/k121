@@ -1,5 +1,6 @@
 import Store from './store.js'
 import defaultDirectives from './default.js'
+import { event } from './event.js'
 export default class Component {
     constructor(props = {}) {
         this.setComponentElement(props)
