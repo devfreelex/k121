@@ -1,8 +1,6 @@
-const mongoose = require('mongoose')
-const nodemailer = require('nodemailer');
-const { google } = require('googleapis');
+const nodemailer = require('nodemailer')
+const { google } = require('googleapis')
 const UserModel = require('../schemas/user.schema.js')
-const RaffleModel = require('../schemas/raffle.schema.js')
 const OAuth2 = google.auth.OAuth2;
 
 module.exports = () => {
@@ -34,7 +32,6 @@ module.exports = () => {
         });
 
         const sendMessage = (user) => {
-            // console.log(user.name, user.friend.name)
             const mailOptions = {
                 from: 'rodrigo.desenvolvedor.web@gmail.com',
                 to: user.email,
@@ -57,28 +54,21 @@ module.exports = () => {
             };
 
             smtpTransport.sendMail(mailOptions, (error, response) => {
-                error ? console.log(error) : console.log(response);
+                if(!error) {
+                    ctx.status = 200
+                    ctx.body = response
+                    smtpTransport.close();
+                    return
+                }
+                console.log(error)
                 smtpTransport.close();
             });
         }
-
-
 
         const friends = await getRaffle()
         friends.forEach( friend => {
             sendMessage(friend)
         })
-
-
-
-    }
-
-    const getRandomEntry = (count) => {
-        return  Math.floor(Math.random() * count);
-    }
-
-    const toObjectId = (id) => {
-        return new mongoose.mongo.ObjectId(id)
     }
 
     const sortUsers = () => {
@@ -106,8 +96,6 @@ module.exports = () => {
 
     const getRaffle = async function(ctx, next) {
         const friends = await sortUsers()
-        // ctx.status = 200
-        // ctx.body = friends
         return friends
     }
 
