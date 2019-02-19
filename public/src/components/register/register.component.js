@@ -35,7 +35,7 @@ export default class Form extends Component {
             name.value = this.user.name
         })
 
-        event.subscribe('removeItem', (data) => {
+        event.subscribe('removeUser', (data) => {
             const { name, email } = bindElement(this)
             if (this.user && (parseInt(data.userId) === this.user._id)) {
                 delete this.user
@@ -91,6 +91,12 @@ export default class Form extends Component {
 
     }
 
+    goToTop(element) {
+        element.scrollIntoView({
+            behavior: 'smooth'
+        });
+    }
+
     showRegister() {
         event.subscribe('editUser', () => {
             const showClass = 'register--hidden'
@@ -98,6 +104,7 @@ export default class Form extends Component {
             if (form.classList.contains(showClass)) {
                 form.classList.remove(showClass)
             }
+            this.goToTop(form)
         })
     }
 
@@ -175,7 +182,7 @@ export default class Form extends Component {
                     <span class="component__title__tag">Cadastro</span>
                     <button class="component__toggle" click="toggleRegister">Novo</button>
                 </h2>
-                <form action="" class="register__form register--hidden" data-bind="form">
+                <form action="" class="register__form register--hidden" data-bind="form" id="register">
                     <label for="" class="register__form__label grid grid-3">
                         <span class="register__form__title">Nome</span>
                         <input type="text" class="register__form--input" keyup="nameValidate" data-bind="name">

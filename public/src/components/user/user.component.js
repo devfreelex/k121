@@ -31,7 +31,7 @@ export default class Form extends Component {
         const removedUser = await userService.removeUser(userId)
         console.log(removedUser)
         this.store.dispatch('removeUser', removedUser)
-        // event.publish('removeItem', { userId })
+        event.publish('removeUser', { userId })
     }
 
     render(state, actions, mutations) {
