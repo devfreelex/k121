@@ -584,4 +584,5 @@ That way, the application will work properly since the browser will intelligentl
 
 # How everything works!?
 
-Coming soon....
+very, very soon...
+
