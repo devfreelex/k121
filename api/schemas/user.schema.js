@@ -23,7 +23,6 @@ UserSchema.statics = {
     getUsers: function () {
         return this.find({})
         .then( data => {
-            console.log(data)
             return data
         }) 
         .catch(err => {

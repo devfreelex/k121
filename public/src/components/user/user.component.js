@@ -29,7 +29,6 @@ export default class Form extends Component {
         e.preventDefault()
         const {userId} = e.target.dataset
         const removedUser = await userService.removeUser(userId)
-        console.log(removedUser)
         this.store.dispatch('removeUser', removedUser)
         event.publish('removeUser', { userId })
     }

@@ -15,6 +15,6 @@ module.exports = () => {
         throw new Error(`Error connecting to db: ${error}`)
     })
     
-    db.once('open', () => console.log('database connected: ', uri))
+    db.once('open', () => console.log('database connected'))
 }
 
