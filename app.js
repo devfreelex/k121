@@ -1,6 +1,7 @@
 const koa = require('koa')
 const koaRouter = require('./api/routes/user.route.js')
 const bodyParser = require('koa-body')
+const koaStatic = require('koa-static')
 const dbConnection = require('./configs/db.config.js')
 
 const port = process.env.PORT || 3000
@@ -10,6 +11,7 @@ const router = koaRouter()
 const app = new koa()
 
 app.use(bodyParser())
+app.use(koaStatic('./public'))
 app.use(router.routes())
 app.use(router.allowedMethods())
 

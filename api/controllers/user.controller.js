@@ -1,6 +1,5 @@
 const UserModel = require('../schemas/user.schema.js')
 
-
 module.exports = () => {
 
     const getUsers = async (ctx, next) => {
