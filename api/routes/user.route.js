@@ -16,7 +16,7 @@ module.exports = () => {
         .delete('/users/:id', userContoller.removeUser)
 
     routes
-        .post('/send', sendMailController.sendEmail)
+        .post('/send', sendMailController.sortUsers)
 
     return routes
 }
