@@ -163,7 +163,7 @@ conhecimentos.
 Eu sinceramente ficaria muito feliz se pensassem assim:
 O cara desenvolveu um app reativo utilizando simplismente javascript, criou uma 
 biblioteca para isso... Imagina o que ele pode fazer com grandes frameworks como
-Angular, react ou Viu por exemplo.
+Angular, react ou Vue por exemplo.
 
 Por último, como está nas minhas entranhas sempre colaborar com algo, peço carinhosamente
 que acessem <https://svelte.technology/> e <https://sapper.svelte.technology/>.
