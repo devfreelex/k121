@@ -205,6 +205,77 @@
 .user--remove:hover {
     background: #f74d77
 }
+
+/* RAFFLE COMPONENT */
+
+.raffle__box,
+.raffle {
+    display: block;
+    float:left;
+    width:100%;
+}
+.raffle {
+    background:#dddfe2;
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    overflow: hidden;
+}
+.raffle__box {
+    padding:10px 15px
+}
+.raffle__button {
+    display: block;
+    float:right;
+    padding:7.5px 15px;
+    background:#15d1a2;
+    color:#fff;
+    text-transform: uppercase;
+    font-size:.875em;
+    font-weight: 600;
+    border:0;
+    border-radius:3px;
+    transition: .5s;
+    cursor: pointer;
+}
+
+.raffle--is-hover:hover {
+    background:#36daa9
+}
+
+/* HELPER LOADER */
+.loader {
+    display: block;
+    float:left;
+    border: 12px solid #f3f3f3; /* Light grey */
+    border-top: 12px solid #db4d34; /* Blue */
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    animation: spin 1s linear infinite;
+  }
+  .loader__box,
+  .loader__msg {
+      display: block;
+      float:left;
+  }
+  .loader__msg {
+      padding-left:5px;
+      font-size:.875em;
+      color:#666;
+      line-height: 2em;
+  }
+  .loader--hidden {
+      display: none;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+
 /* MEDIA QUERIES GRID */
 
 .grid {

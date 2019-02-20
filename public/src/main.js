@@ -4,6 +4,7 @@ import store from './store/index.js';
 import headerComponent from './components/header/header.component.js';
 import registerComponent from './components/register/register.component.js';
 import userComponent from './components/user/user.component.js';
+import raffleComponent from './components/raffle/raffle.component.js';
 
 
   const app = new App({
@@ -11,6 +12,7 @@ import userComponent from './components/user/user.component.js';
       components:{
         headerComponent,
         registerComponent,
-        userComponent
+        userComponent,
+        raffleComponent
       }
   })

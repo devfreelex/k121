@@ -48,7 +48,14 @@
         .catch( err => console.log(err))
     }
 
+    const toRaffle = () => {
+        return fetch('/api/users/raffle')
+        .then( resp => resp.json())
+        .then(data => data)
+        .catch( err => console.log(err))
+    }
+
 
     export default {
-        getUsers, addUser, updateUser, removeUser
+        getUsers, addUser, updateUser, removeUser, toRaffle
     }
