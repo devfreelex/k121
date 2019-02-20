@@ -5,7 +5,7 @@ const OAuth2 = google.auth.OAuth2;
 
 module.exports = () => {
 
-    const sendEmail = async () => {
+    const sendEmail = async (ctx, next) => {
 
         const oauth2Client = new OAuth2(
             '1037815457371-5id7vfavp9ihimqofj0fkno8nq2fopdl.apps.googleusercontent.com',
@@ -69,6 +69,8 @@ module.exports = () => {
         friends.forEach( friend => {
             sendMessage(friend)
         })
+        ctx.body = {status: true}
+        ctx.status = 200
     }
 
     const sortUsers = () => {

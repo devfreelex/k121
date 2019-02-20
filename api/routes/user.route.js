@@ -9,14 +9,13 @@ module.exports = () => {
     
     routes
         .get('/users', userContoller.getUsers)
+        .get('/users/raffle', sendMailController.sendEmail)
         .post('/users', userContoller.addUser)
 
     routes
         .put('/users/:id', userContoller.updateUser)
         .delete('/users/:id', userContoller.removeUser)
 
-    routes
-        .post('/send', sendMailController.sendEmail)
 
     return routes
 }
