@@ -88,7 +88,7 @@ Pra fechar o assunto de db, o ODM utilizado foi o Mongoose mesmo.
 Sei que na sua análise, observará que não há um middleware para tratamento de erros, nem
 tão pouco para retorno de respostas padrão.
 
-&#1F605 Fico devendo!
+😅 Fico devendo!
 
 ### **Get Started**
 ---
